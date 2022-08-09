@@ -11,21 +11,26 @@
     
     seg Code
     org $F000
-Start
+Start:
 
     lda #1    ; Load the A register with the decimal value 1
     ldx #2    ; Load the X register with the decimal value 2
     ldy #3    ; Load the Y register with the decimal value 3
     inx       ; Increment X
     iny       ; Increment Y
-              ; Increment A
-    ; increment A not supported in 6502
+
+    clc
+    adc #1    ; Increment A
+              ; Note: increment A not supported in 6502
+
     dex       ; Decrement X
     dey       ; Decrement Y
-              ; Decrement A
-    ; decrement A not supported in 6502
 
-NextFrame
+    sec
+    sbc #1    ; Decrement A
+              ; Note: decrement A not supported in 6502
+
+NextFrame:
     jmp NextFrame
 
     org $FFFC

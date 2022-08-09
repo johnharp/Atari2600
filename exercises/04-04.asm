@@ -17,7 +17,7 @@
 
     seg Code
     org $F000
-Start
+Start:
 
     lda #100    ; Load the A register with the literal decimal value 100
 
@@ -29,7 +29,7 @@ Start
 
     ; Register A should now contain the decimal 95 (or $5F in hexadecimal)
 
-NextFrame
+NextFrame:
     jmp NextFrame
 
     org $FFFC

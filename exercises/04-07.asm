@@ -17,14 +17,14 @@
     
     seg Code
     org $F000
-Start
+Start:
 
     lda #10    ; Load the A register with the decimal value 10
     sta $80    ; Store the value from A into memory position $80
     inc $80    ; Increment the value inside a (zero page) memory position $80
     dec $80    ; Decrement the value inside a (zero page) memory position $80
 
-NextFrame
+NextFrame:
     jmp NextFrame
 
     org $FFFC

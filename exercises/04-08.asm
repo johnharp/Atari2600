@@ -17,13 +17,14 @@
     org $F000
 Start:
 
-    ldy #11    ; Initialize the Y register with the decimal value 10
+    ldy #10    ; Initialize the Y register with the decimal value 10
 
 Loop:
-    dey        ; Decrement Y
     tya        ; Transfer Y to A
     sta $80,Y  ; Store the value in A inside memory position $80+Y   
-    bne Loop
+    dey        ; Decrement Y
+
+    bpl Loop
 
 
 NextFrame:

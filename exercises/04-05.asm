@@ -15,7 +15,7 @@
     
     seg Code
     org $F000
-Start
+Start:
 
     lda #$A     ; Load the A register with the hexadecimal value $A
     ldx #%1010  ; Load the X register with the binary value %1010
@@ -31,7 +31,7 @@ Start
 
     sta $82     ; Store the value of A into RAM position $82
 
-NextFrame
+NextFrame:
     jmp NextFrame
 
     org $FFFC
