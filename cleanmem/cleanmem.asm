@@ -5,12 +5,12 @@
     ; Gustavo Pezzi, Pikuma.com
 
     seg code
-    org $F000     ;  Define the code origin
+    org #$F000     ;  Define the code origin
 
 Start:
     sei           ; Disable interrupts
     cld           ; Disable the BCD decimal mode
-    ldx $FF
+    ldx #$FF
     txs           ; Transfer the x register to the stack pointer register
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -19,7 +19,7 @@ Start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     lda #0        ; A = 0
-    ldx $FF       ; X = $FF
+
 MemLoop:
     sta $0,X      ; store A value to mem address 0 + X
     dex           ; X--
@@ -30,6 +30,6 @@ MemLoop:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Fill the ROM size to exactly 4KB
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    org $FFFC
+    org #$FFFC
     .word Start   ; reset vector at $FFFC (where the program starts)
     .word Start   ; interrupt vector at $FFFE (unused in the VCS)
