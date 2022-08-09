@@ -22,6 +22,8 @@ Start
     sta $80     ; Store the value in the A register into (zero page) memory address $80
     stx $81     ; Store the value in the X register into (zero page) memory address $81
     lda #10     ; Load A with the decimal value 10
+
+    clc         ; Clear the carrry before add operations
     adc $80     ; Add to A the value inside RAM address $80
     adc $81     ; Add to A the value inside RAM address $81
 
